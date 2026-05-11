@@ -63,7 +63,7 @@ function frameObject(object3D) {
   const distance = 1.25 * Math.max(fitHeightDistance, fitWidthDistance);
 
   camera.near = Math.max(distance / 100, 0.01);
-  camera.far = Math.max(distance * 100, 10);
+  camera.far = Math.max(distance * 20, camera.near + 10);
   camera.updateProjectionMatrix();
 
   const direction = new THREE.Vector3(1, 0.5, 1).normalize();
