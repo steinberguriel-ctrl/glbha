@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GLB Studio Viewer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">3D Preview</p>
+          <h1>GLB Studio Viewer</h1>
+        </div>
+        <label for="glb-input" class="upload-button">
+          <span>Upload GLB</span>
+        </label>
+        <input id="glb-input" type="file" accept=".glb,model/gltf-binary" />
+      </header>
+
+      <main class="viewer-layout">
+        <section class="panel viewer-panel">
+          <canvas id="viewer-canvas" aria-label="GLB model viewer"></canvas>
+          <div id="status-pill" class="status-pill">Upload a .glb file to begin.</div>
+          <div id="loading-overlay" class="loading-overlay hidden">
+            <div class="spinner"></div>
+            <p>Loading model…</p>
+          </div>
+        </section>
+
+        <aside class="panel tips-panel">
+          <h2>Quick tips</h2>
+          <ul>
+            <li>Use mouse/touch to rotate the model.</li>
+            <li>Scroll or pinch to zoom in and out.</li>
+            <li>Drag with right mouse button to pan.</li>
+            <li>Upload a new GLB anytime to replace the scene.</li>
+          </ul>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="./viewer.js"></script>
+  </body>
+</html>
