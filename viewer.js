@@ -6,7 +6,7 @@ const canvas = document.getElementById("viewer-canvas");
 const input = document.getElementById("glb-input");
 const statusPill = document.getElementById("status-pill");
 const loadingOverlay = document.getElementById("loading-overlay");
-const DEGREES_IN_HALF_CIRCLE = 360;
+const DEGREES_TO_RADIANS = Math.PI / 180;
 const CAMERA_DISTANCE_MULTIPLIER = 1.25;
 const FAR_PLANE_MULTIPLIER = 20;
 const MIN_FAR_PLANE_OFFSET = 10;
@@ -62,7 +62,8 @@ function frameObject(object3D) {
   const center = box.getCenter(new THREE.Vector3());
 
   const maxSize = Math.max(size.x, size.y, size.z);
-  const fitHeightDistance = maxSize / (2 * Math.tan((Math.PI * camera.fov) / DEGREES_IN_HALF_CIRCLE));
+  const verticalFovRadians = camera.fov * DEGREES_TO_RADIANS;
+  const fitHeightDistance = maxSize / (2 * Math.tan(verticalFovRadians / 2));
   const fitWidthDistance = fitHeightDistance / camera.aspect;
   const distance = CAMERA_DISTANCE_MULTIPLIER * Math.max(fitHeightDistance, fitWidthDistance);
 
