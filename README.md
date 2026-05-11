@@ -17,7 +17,7 @@ Because browsers restrict module loading from `file://`, serve this folder with 
 ### Python
 
 ```bash
-cd /home/runner/work/glbha/glbha
+cd /path/to/glbha
 python3 -m http.server 8000
 ```
 
