@@ -2,7 +2,7 @@
 
 A modern, responsive website for uploading and viewing `.glb` 3D files directly in the browser.
 
-## 🌐 Live Site
+## 🌐 The site is located in
 
 **https://steinberguriel-ctrl.github.io/glbha/**
 
