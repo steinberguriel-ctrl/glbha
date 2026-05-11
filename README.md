@@ -2,6 +2,10 @@
 
 A modern, responsive website for uploading and viewing `.glb` 3D files directly in the browser.
 
+## 🌐 Live Site
+
+**https://steinberguriel-ctrl.github.io/glbha/**
+
 ## Features
 
 - Upload and preview GLB files
