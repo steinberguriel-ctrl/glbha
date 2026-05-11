@@ -6,6 +6,10 @@ const canvas = document.getElementById("viewer-canvas");
 const input = document.getElementById("glb-input");
 const statusPill = document.getElementById("status-pill");
 const loadingOverlay = document.getElementById("loading-overlay");
+const DEGREES_IN_HALF_CIRCLE = 360;
+const CAMERA_DISTANCE_MULTIPLIER = 1.25;
+const FAR_PLANE_MULTIPLIER = 20;
+const MIN_FAR_PLANE_OFFSET = 10;
 
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -58,12 +62,12 @@ function frameObject(object3D) {
   const center = box.getCenter(new THREE.Vector3());
 
   const maxSize = Math.max(size.x, size.y, size.z);
-  const fitHeightDistance = maxSize / (2 * Math.tan((Math.PI * camera.fov) / 360));
+  const fitHeightDistance = maxSize / (2 * Math.tan((Math.PI * camera.fov) / DEGREES_IN_HALF_CIRCLE));
   const fitWidthDistance = fitHeightDistance / camera.aspect;
-  const distance = 1.25 * Math.max(fitHeightDistance, fitWidthDistance);
+  const distance = CAMERA_DISTANCE_MULTIPLIER * Math.max(fitHeightDistance, fitWidthDistance);
 
   camera.near = Math.max(distance / 100, 0.01);
-  camera.far = Math.max(distance * 20, camera.near + 10);
+  camera.far = Math.max(distance * FAR_PLANE_MULTIPLIER, camera.near + MIN_FAR_PLANE_OFFSET);
   camera.updateProjectionMatrix();
 
   const direction = new THREE.Vector3(1, 0.5, 1).normalize();
