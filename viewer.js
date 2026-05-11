@@ -122,7 +122,7 @@ function handleFile(file) {
       URL.revokeObjectURL(currentModelUrl);
       currentModelUrl = null;
     },
-    undefined,
+    null,
     () => {
       setStatus("Could not parse this GLB file.", "error");
       toggleLoading(false);
